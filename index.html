@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイ</title>
+    <meta charset="UTF-8"><title>モアイくん</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -29,6 +29,7 @@ var width = moai.offsetWidth;
 var height = moai.offsetHeight;
 
 var gomibako = document.getElementById("gm");
+gomibako.style.position = "absolute";
 var gmRect = gm.getBoundingClientRect();
 var random_x = Math.floor( Math.random()*(win_width-gmRect.width) ) +gmRect.width;
 var random_y = Math.floor( Math.random()*(win_height-gmRect.height) ) +gmRect.height;
@@ -68,7 +69,7 @@ moai.addEventListener("touchend", function(e) {
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
-//        document.getElementById("text").innerHTML = win_width+","+win_height;
+//        document.getElementById("text").innerHTML = random_x+","+random_y;
     }
 
 });
