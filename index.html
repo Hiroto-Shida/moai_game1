@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイくん</title>
+    <meta charset="UTF-8"><title>モアイ</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -9,7 +9,7 @@
     <div id="cha">
         <img src="new_moai.png" width="80px" >
     </div>
-    <div style="text-align: center;">
+    <div>
         <img src="gomibako.png" id="gm" width="100px"><br>
     </div>
 <script>
@@ -18,7 +18,7 @@ var flick_sx = 0;
 var flick_sy = 0;
 var x = 0;
 var y = 0;
-var win_width = document.body.offsetWidth; 
+var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
 var win_height = document.body.offsetHeight;
 
 var moai = document.getElementById("cha");
@@ -30,7 +30,10 @@ var height = moai.offsetHeight;
 
 var gomibako = document.getElementById("gm");
 var gmRect = gm.getBoundingClientRect();
-var random = Math.floor( Math.random()* 10 );
+var random_x = Math.floor( Math.random()*(win_width-gmRect.width) ) +gmRect.width;
+var random_y = Math.floor( Math.random()*(win_height-gmRect.height) ) +gmRect.height;
+gomibako.style.left = random_x +"px";
+gomibako.style.top = random_y +"px";
 
 
 // モアイに指が触れたときの処理を定義
