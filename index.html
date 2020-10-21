@@ -23,11 +23,11 @@ var win_height = document.body.offsetHeight;
 
 var gomibako = document.getElementById("gm");
 gomibako.style.position = "absolute";
-var gmRect = gm.getBoundingClientRect();
-var random_x = Math.floor( Math.random()*(win_width-gmRect.width) ) +gmRect.width;
-var random_y = Math.floor( Math.random()*(win_height-gmRect.height) ) +gmRect.height;
+var random_x = Math.floor( Math.random()*(win_width-gomibako.offsetWidth) ) +gomibako.offsetWidth;
+var random_y = Math.floor( Math.random()*(win_height-gomibako.offsetHeight) ) +gomibako.offsetHeight;
 gomibako.style.left = random_x +"px";
 gomibako.style.top = random_y +"px";
+var gmRect = gm.getBoundingClientRect();
 
 var moai = document.getElementById("cha");
 moai.style.position = "absolute";
@@ -58,14 +58,14 @@ moai.addEventListener("touchmove", function(e) {
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "x>="+gomibako.style.left+"&"+"x<="+gomibako.style.left+gmRect.width+",,,&&,,,y>="+gomibako.style.top+"&"+"y<="+gomibako.style.top+gmRect.height+"----"+x+","+y;
 });
- 
+
 // モアイから指が離れたときの処理を定義
 moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
     const messages = ["うわ～","たすけて～","さよなら～"];
     const messageNo = Math.floor( Math.random()*messages.length );
-    if((x>=gomibako.style.left && x<=(gomibako.style.left+gmRect.width)) && (y>=gomibako.style.top && y<=(gomibako.style.top+gmRect.height))){
+    if((x>=gmRect.left && x<=(gmRect.left+gmRect.width)) && (y>=gmRect.top && y<=(gmRect.top+gmRect.height))){
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
