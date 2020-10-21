@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイくん</title>
+    <meta charset="UTF-8"><title>モアイ</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -21,26 +21,27 @@ var y = 0;
 var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
 var win_height = document.body.offsetHeight;
 
-function firstscript() {
-    gomibako = document.getElementById("gm");
-    gomibako.style.position = "absolute";
-    random_x = Math.floor( Math.random()*(win_width-(gomibako.offsetWidth*2)) ) +gomibako.offsetWidth;
-    random_y = Math.floor( Math.random()*(win_height-(gomibako.offsetHeight*4)) ) +gomibako.offsetHeight*4;
-    gomibako.style.left = random_x +"px";
-    gomibako.style.top = random_y +"px";
-    gmRect = gm.getBoundingClientRect();
+var gomibako = document.getElementById("gm");
+gomibako.style.position = "absolute";
+var random_x = Math.floor( Math.random()*(win_width-(gomibako.offsetWidth*2)) ) +gomibako.offsetWidth;
+var random_y = Math.floor( Math.random()*(win_height-(gomibako.offsetHeight*4)) ) +gomibako.offsetHeight*4;
+gomibako.style.left = random_x +"px";
+gomibako.style.top = random_y +"px";
+var gmRect = gm.getBoundingClientRect();
+var g_width = gomibako.naturalWidth;
+var g_height = gomibako.naturalHeight;
+
+document.addEventListener("load", function() {
     g_width = gomibako.naturalWidth;
     g_height = gomibako.naturalHeight;
+});
 
-    moai = document.getElementById("cha");
-    moai.style.position = "absolute";
-    moai.style.width = document.width + "px";
-    moai.style.height = document.height + "px";
-    width = moai.offsetWidth;
-    height = moai.offsetHeight;
-}
-window.onload = firstscript;
-
+var moai = document.getElementById("cha");
+moai.style.position = "absolute";
+moai.style.width = document.width + "px";
+moai.style.height = document.height + "px";
+var width = moai.offsetWidth;
+var height = moai.offsetHeight;
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
