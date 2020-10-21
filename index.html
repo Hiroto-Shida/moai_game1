@@ -23,8 +23,8 @@ var win_height = document.body.offsetHeight;
 
 var gomibako = document.getElementById("gm");
 gomibako.style.position = "absolute";
-var random_x = Math.floor( Math.random()*(win_width-gomibako.offsetWidth) ) +gomibako.offsetWidth;
-var random_y = Math.floor( Math.random()*(win_height-gomibako.offsetHeight) ) +gomibako.offsetHeight;
+var random_x = Math.floor( Math.random()*(win_width-(gomibako.offsetWidth*2)) ) +gomibako.offsetWidth;
+var random_y = Math.floor( Math.random()*(win_height-(gomibako.offsetHeight*4)) ) +gomibako.offsetHeight*2;
 gomibako.style.left = random_x +"px";
 gomibako.style.top = random_y +"px";
 var gmRect = gm.getBoundingClientRect();
@@ -56,7 +56,7 @@ moai.addEventListener("touchmove", function(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-    document.getElementById("text").innerHTML = "x>="+gomibako.style.left+"&"+"x<="+gomibako.style.left+gmRect.width+",,,&&,,,y>="+gomibako.style.top+"&"+"y<="+gomibako.style.top+gmRect.height+"----"+x+","+y;
+//    document.getElementById("text").innerHTML = "x>="+gomibako.style.left+"&"+"x<="+gomibako.style.left+gmRect.width+",,,&&,,,y>="+gomibako.style.top+"&"+"y<="+gomibako.style.top+gmRect.height+"----"+x+","+y;
 });
 
 // モアイから指が離れたときの処理を定義
