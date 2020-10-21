@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイくん</title>
+    <meta charset="UTF-8"><title>モアイ</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -44,6 +44,7 @@ moai.addEventListener("touchstart", function(e) {
     // 指が触れた位置のx,y座標を記録
 //    flick_sx = e.touches[0].pageX;
 //    flick_sy = e.touches[0].pageY;
+    document.getElementById("text").innerHTML = random_x+","+random_y;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -69,7 +70,6 @@ moai.addEventListener("touchend", function(e) {
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
-//        document.getElementById("text").innerHTML = random_x+","+random_y;
     }
 
 });
