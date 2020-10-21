@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイくん</title>
+    <meta charset="UTF-8"><title>モアイ</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -38,7 +38,7 @@ moai.addEventListener("touchstart", function(e) {
 
 // 画面上で指を移動させているきの処理を定義
 moai.addEventListener("touchmove", function(e) {
-    // スクロール無効化                                     
+    // スクロール無効化
     e.preventDefault();
     // 指が触れた位置のx,y座標を記録
     x = e.touches[0].pageX;
@@ -51,12 +51,15 @@ moai.addEventListener("touchmove", function(e) {
  
 // 四角から指が離れたときの処理を定義
 moai.addEventListener("touchend", function(e) {
+    // スクロール無効化
     e.preventDefault();
+    const messages = ["うわ～","たすけて～","さよなら～"];
+    const messageNo = Math.floor( Math.random()*messages.length );
     var gmRect = gm.getBoundingClientRect();
     if((x>=gmRect.left && x<=(gmRect.left+gmRect.width)) && (y>=gmRect.top && y<=(gmRect.top+gmRect.height))){
         var cha = document.getElementById("cha");
         cha.remove();
-        document.getElementById("text").innerHTML = "うわー";
+        document.getElementById("text").innerHTML = messages[messageNo];
     }
 
 });
