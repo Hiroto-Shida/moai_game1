@@ -30,10 +30,11 @@ gomibako.style.top = random_y +"px";
 var gmRect = gm.getBoundingClientRect();
 var g_width = gomibako.offsetWidth;
 var g_height = gomibako.offsetHeight;
-document.addEventListener("load", function() {
-    g_width = gomibako.offsetWidth;
-    g_height = gomibako.offsetHeight;
-});
+
+//document.addEventListener("load", function() {
+//    g_width = gomibako.offsetWidth;
+//    g_height = gomibako.offsetHeight;
+//});
 
 var moai = document.getElementById("cha");
 moai.style.position = "absolute";
@@ -49,8 +50,8 @@ moai.addEventListener("touchstart", function(e) {
     // 指が触れた位置のx,y座標を記録
 //    flick_sx = e.touches[0].pageX;
 //    flick_sy = e.touches[0].pageY;
-//    g_width = gomibako.naturalWidth;
-//    g_height = gomibako.naturalHeight;
+    g_width = gomibako.naturalWidth;
+    g_height = gomibako.naturalHeight;
 });
 
 // 画面上で指を移動させているきの処理を定義
