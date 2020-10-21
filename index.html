@@ -56,7 +56,7 @@ moai.addEventListener("touchmove", function(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-    document.getElementById("text").innerHTML = "x>="+gomibako.style.left+"&"+"x<="+gomibako.style.left+gmRect.width+",,,&&,,,y>="+gomibako.style.top+"&"+"y<="+gomibako.style.top+gmRect.height+"----"+x+","+y;
+    document.getElementById("text").innerHTML = "x>="+gmRect.left+"&"+"x<="+gmRect.left+gmRect.width+",,,&&,,,y>="+gmRect.top+"&"+"y<="+gmRect.top+gmRect.height+"----"+x+","+y;
 });
 
 // モアイから指が離れたときの処理を定義
