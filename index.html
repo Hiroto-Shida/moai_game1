@@ -43,7 +43,6 @@ moai.addEventListener("touchstart", function(e) {
     // 指が触れた位置のx,y座標を記録
 //    flick_sx = e.touches[0].pageX;
 //    flick_sy = e.touches[0].pageY;
-    document.getElementById("text").innerHTML = random_x+","+random_y;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -55,8 +54,9 @@ moai.addEventListener("touchmove", function(e) {
     y = e.touches[0].pageY;
 
     // フリック中のアニメーション＋スタイル
-        moai.style.left = (x-width/2) +"px";
-        moai.style.top = (y-height/2) +"px";
+    moai.style.left = (x-width/2) +"px";
+    moai.style.top = (y-height/2) +"px";
+    document.getElementById("text").innerHTML = random_x+","+random_y+"-"+x+","+y;
 });
  
 // モアイから指が離れたときの処理を定義
@@ -70,7 +70,6 @@ moai.addEventListener("touchend", function(e) {
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
     }
-
 });
 
 </script>
