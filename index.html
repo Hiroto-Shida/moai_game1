@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイくん</title>
+    <meta charset="UTF-8"><title>モアイ</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -18,14 +18,18 @@ var flick_sx = 0;
 var flick_sy = 0;
 var x = 0;
 var y = 0;
+var win_width = document.body.offsetWidth; 
+var win_height = document.body.offsetHeight;
+
 var moai = document.getElementById("cha");
-
-moai.style.position = "absolute";
-//moai.style.width = document.width + "px";
-//moai.style.height = document.height + "px";
-
 var width = moai.offsetWidth;
 var height = moai.offsetHeight;
+moai.style.position = "absolute";
+
+var gomibako = document.getElementById("gm");
+var gmRect = gm.getBoundingClientRect();
+var random = Math.floor( Math.random()* 10 );
+
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
@@ -55,11 +59,11 @@ moai.addEventListener("touchend", function(e) {
     e.preventDefault();
     const messages = ["うわ～","たすけて～","さよなら～"];
     const messageNo = Math.floor( Math.random()*messages.length );
-    var gmRect = gm.getBoundingClientRect();
     if((x>=gmRect.left && x<=(gmRect.left+gmRect.width)) && (y>=gmRect.top && y<=(gmRect.top+gmRect.height))){
         var cha = document.getElementById("cha");
         cha.remove();
-        document.getElementById("text").innerHTML = messages[messageNo];
+//        document.getElementById("text").innerHTML = messages[messageNo];
+        document.getElementById("text").innerHTML = win_width+","+win_height;
     }
 
 });
