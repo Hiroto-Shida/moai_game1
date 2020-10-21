@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイ</title>
+    <meta charset="UTF-8"><title>モアイくん</title>
     <meta name="viewport" content="width=device-width">
     </head>
 <body>
@@ -21,19 +21,19 @@ var y = 0;
 var moai = document.getElementById("cha");
 
 moai.style.position = "absolute";
-moai.style.width = document.width + "px";
-moai.style.height = document.height + "px";
+//moai.style.width = document.width + "px";
+//moai.style.height = document.height + "px";
 
 var width = moai.offsetWidth;
 var height = moai.offsetHeight;
 
-// 四角に指が触れたときの処理を定義
+// モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
     //スクロール無効化                                      
     e.preventDefault();
     // 指が触れた位置のx,y座標を記録
-    flick_sx = e.touches[0].pageX;
-    flick_sy = e.touches[0].pageY;
+//    flick_sx = e.touches[0].pageX;
+//    flick_sy = e.touches[0].pageY;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -49,7 +49,7 @@ moai.addEventListener("touchmove", function(e) {
         moai.style.top = (y-height/2) +"px";
 });
  
-// 四角から指が離れたときの処理を定義
+// モアイから指が離れたときの処理を定義
 moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
