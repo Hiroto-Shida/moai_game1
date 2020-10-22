@@ -29,8 +29,8 @@ window.onload = function(){
 
     random_x = Math.floor( Math.random()*(win_width-(g_width*2)) ) +g_width;
     random_y = Math.floor( Math.random()*(win_height-(g_height*2)) ) +g_height;
-    gomibako.style.left = random_x +"px";
-    gomibako.style.top = random_y +"px";
+    gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
+    gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
 };
 
