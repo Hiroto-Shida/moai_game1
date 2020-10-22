@@ -2,8 +2,8 @@ var flick_sx = 0;
 var flick_sy = 0;
 var x = 0;
 var y = 0;
-var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
-var win_height = document.body.offsetHeight;
+var win_width; //ウィンドウの横サイズ
+var win_height;
 
 //var win_width = document.documentElement.clientWidth; //ウィンドウの横サイズ
 //var win_height = document.documentElement.clientHeight;
@@ -15,20 +15,25 @@ var random_y = Math.floor( Math.random()*(win_height-(gomibako.offsetHeight*2)) 
 gomibako.style.left = random_x +"px";
 gomibako.style.top = random_y +"px";
 var gmRect = gm.getBoundingClientRect();
-var g_width = gomibako.offsetWidth;
-var g_height = gomibako.offsetHeight;
-
-//document.addEventListener("load", function() {
-//    g_width = gomibako.offsetWidth;
-//    g_height = gomibako.offsetHeight;
-//});
+var g_width;
+var g_height;
 
 var moai = document.getElementById("cha");
 moai.style.position = "absolute";
-moai.style.width = document.width + "px";
-moai.style.height = document.height + "px";
-var width = moai.offsetWidth;
-var height = moai.offsetHeight;
+//moai.style.width = document.width + "px";
+//moai.style.height = document.height + "px";
+var width;
+var height;
+
+// window(HTML)の読み込みが完了してからサイズ読み込み
+window.onload = function(){
+    win_width = document.body.offsetWidth; //ウィンドウの横サイズ
+    win_height = document.body.offsetHeight; //
+    width = moai.offsetWidth;
+    height = moai.offsetHeight;
+    g_width = gomibako.offsetWidth;
+    g_height = gomibako.offsetHeight;
+};
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
@@ -37,8 +42,6 @@ moai.addEventListener("touchstart", function(e) {
     // 指が触れた位置のx,y座標を記録
 //    flick_sx = e.touches[0].pageX;
 //    flick_sy = e.touches[0].pageY;
-    g_width = gomibako.naturalWidth;
-    g_height = gomibako.naturalHeight;
     document.getElementById("text").innerHTML = win_width+","+win_height;
 });
 
