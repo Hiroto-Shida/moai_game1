@@ -31,14 +31,13 @@ window.onload = function(){
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
-
 };
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
     e.preventDefault();
-    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
+//    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -65,5 +64,6 @@ moai.addEventListener("touchend", function(e) {
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
+        location.reload();
     }
 });
