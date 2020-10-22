@@ -5,7 +5,6 @@ var win_height; //ウィンドウの縦サイズ
 
 var moai = document.getElementById("cha");
 moai.style.position = "fixed";
-moai.style.bottom = 0;
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
 
@@ -23,10 +22,11 @@ window.onload = function(){
     win_height = window.innerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
+    moai.style.bottom = win_height/10;
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
-    random_x = Math.floor( Math.random()*(win_width-width-g_width))+width;
-    random_y = Math.floor( Math.random()*(win_height-height-g_height))+height;
+    random_x = Math.floor( Math.random()*(win_width-g_width));
+    random_y = Math.floor( Math.random()*(win_height-height-g_height));
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
