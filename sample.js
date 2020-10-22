@@ -62,7 +62,8 @@ moai.addEventListener("touchend", function(e) {
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         var cha = document.getElementById("cha");
-        cha.classList.add('active');
+        cha.classList.add('active1');
+        cha.classList.add('active2');
         setTimeout('cha.remove()', 1000);
         document.getElementById("text").innerHTML = messages[messageNo];
         setTimeout('location.reload()', 3000); //1秒後リロード
