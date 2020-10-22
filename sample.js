@@ -62,9 +62,8 @@ moai.addEventListener("touchend", function(e) {
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         var cha = document.getElementById("cha");
-        cha.classList.add('active1');
-        cha.classList.add('active2');
-        setTimeout('cha.remove()', 1000);
+        cha.classList.add('active'); //class"active"を追加する
+        setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
         setTimeout('location.reload()', 2000); //1秒後リロード
     }
