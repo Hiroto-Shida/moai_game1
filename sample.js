@@ -64,6 +64,6 @@ moai.addEventListener("touchend", function(e) {
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
-        location.reload();
+        setTimeout('location.reload()', 1000); //1秒後リロード
     }
 });
