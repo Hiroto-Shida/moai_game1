@@ -1,7 +1,7 @@
 var x = 0; //指の位置(x座標)
 var y = 0; //指の位置(y座標)
-var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
-var win_height = document.body.offsetHeight; //ウィンドウの縦サイズ
+var win_width; //ウィンドウの横サイズ
+var win_height; //ウィンドウの縦サイズ
 
 var gomibako = document.getElementById("gm");
 gomibako.style.position = "absolute";
@@ -20,8 +20,8 @@ var height;
 
 // window(HTML)の読み込みが完了してからサイズ読み込み
 window.onload = function(){
-    win_width = document.body.offsetWidth; //ウィンドウの横サイズ
-    win_height = document.body.offsetHeight; //ウィンドウの縦サイズ
+    win_width = window.outerWidth; //ウィンドウの横サイズ
+    win_height = window.outerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
@@ -38,8 +38,8 @@ window.onload = function(){
 moai.addEventListener("touchstart", function(e) {
     //スクロール無効化                                      
     e.preventDefault();
-    win_width = document.body.offsetWidth; //ウィンドウの横サイズ
-    win_height = document.body.offsetHeight; //ウィンドウの縦サイズ
+    win_width = window.outerWidth; //ウィンドウの横サイズ
+    win_height = window.outerHeight; //ウィンドウの縦サイズ
     document.getElementById("text").innerHTML = win_width+","+win_height;
 });
 
