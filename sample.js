@@ -1,7 +1,7 @@
 var x = 0; //指の位置(x座標)
 var y = 0; //指の位置(y座標)
-var win_width; //ウィンドウの横サイズ
-var win_height; //ウィンドウの縦サイズ
+var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
+var win_height = document.body.offsetHeight; //ウィンドウの縦サイズ
 
 var gomibako = document.getElementById("gm");
 gomibako.style.position = "absolute";
