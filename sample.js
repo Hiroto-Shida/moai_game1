@@ -66,6 +66,6 @@ moai.addEventListener("touchend", function(e) {
         cha.classList.add('active2');
         setTimeout('cha.remove()', 1000);
         document.getElementById("text").innerHTML = messages[messageNo];
-        setTimeout('location.reload()', 3000); //1秒後リロード
+        setTimeout('location.reload()', 2000); //1秒後リロード
     }
 });
