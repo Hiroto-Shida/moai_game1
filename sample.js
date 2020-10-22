@@ -65,6 +65,13 @@ moai.addEventListener("touchend", function(e) {
         cha.classList.add('active'); //class"active"を追加する
         setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
-        setTimeout('location.reload()', 2000); //1秒後リロード
+
+        let dx = (gmRect.left+g_width/2) - (x-width/2)
+        let dy = (gmRect.left+g_height/2) - (x-height/2)
+        for (let i = 1; i <= 10; i++) {
+            moai.style.left = (x-width/2)+dx*(i/10) +"px";
+            moai.style.top = (y-height/2)+dy*(i/10) +"px";
+        }
+        setTimeout('location.reload()', 1000); //1秒後リロード
     }
 });
