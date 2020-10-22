@@ -13,8 +13,6 @@ var g_height;
 
 var moai = document.getElementById("cha");
 moai.style.position = "absolute";
-//moai.style.width = document.width + "px";
-//moai.style.height = document.height + "px";
 var width;
 var height;
 
@@ -27,8 +25,8 @@ window.onload = function(){
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
 
-    random_x = Math.floor( Math.random()*(win_width-(width*2)) ) +width;
-    random_y = Math.floor( Math.random()*(win_height-(height*2)) ) +height;
+    random_x = Math.floor( Math.random()*(win_width-width-g_width))+width;
+    random_y = Math.floor( Math.random()*(win_height-height-g_height))+height;
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
@@ -40,7 +38,7 @@ moai.addEventListener("touchstart", function(e) {
     e.preventDefault();
 //    win_width = window.innerWidth; //ウィンドウの横サイズ
 //    win_height = window.innerHeight; //ウィンドウの縦サイズ
-    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
+    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomibako=${gomibako.style.left},${gomibako.style.top}`;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -61,7 +59,6 @@ moai.addEventListener("touchmove", function(e) {
 moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
-
     const messages = ["うわ～","たすけて～","さよなら～"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
