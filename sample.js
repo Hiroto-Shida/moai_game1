@@ -1,45 +1,43 @@
-var flick_sx = 0;
-var flick_sy = 0;
-var x = 0;
-var y = 0;
-var win_width = document.body.offsetWidth; //ウィンドウの横サイズ
-var win_height = document.body.offsetHeight;
-
-//var win_width = document.documentElement.clientWidth; //ウィンドウの横サイズ
-//var win_height = document.documentElement.clientHeight;
-
-var gomibako = document.getElementById("gm");
-gomibako.style.position = "absolute";
-var random_x = Math.floor( Math.random()*(win_width-(gomibako.offsetWidth*2)) ) +gomibako.offsetWidth;
-var random_y = Math.floor( Math.random()*(win_height-(gomibako.offsetHeight*2)) ) +gomibako.offsetHeight;
-gomibako.style.left = random_x +"px";
-gomibako.style.top = random_y +"px";
-var gmRect = gm.getBoundingClientRect();
-var g_width = gomibako.offsetWidth;
-var g_height = gomibako.offsetHeight;
-
-//document.addEventListener("load", function() {
-//    g_width = gomibako.offsetWidth;
-//    g_height = gomibako.offsetHeight;
-//});
+var x = 0; //指の位置(x座標)
+var y = 0; //指の位置(y座標)
+var win_width; //ウィンドウの横サイズ
+var win_height; //ウィンドウの縦サイズ
 
 var moai = document.getElementById("cha");
 moai.style.position = "absolute";
-moai.style.width = document.width + "px";
-moai.style.height = document.height + "px";
-var width = moai.offsetWidth;
-var height = moai.offsetHeight;
+var width; //モアイの横サイズ
+var height; //モアイの縦サイズ
+
+var gomibako = document.getElementById("gm");
+gomibako.style.position = "absolute";
+var g_width; //ゴミ箱の横サイズ
+var g_height; //ゴミ箱の縦サイズ
+var random_x;
+var random_y;
+var gmRect;
+
+// window(HTML)の読み込みが完了してからサイズ読み込み
+window.onload = function(){
+    win_width = window.innerWidth; //ウィンドウの横サイズ
+    win_height = window.innerHeight; //ウィンドウの縦サイズ
+
+    width = moai.offsetWidth; //モアイの横サイズ
+    height = moai.offsetHeight; //モアイの縦サイズ
+
+    g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
+    g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
+    random_x = Math.floor( Math.random()*(win_width-width-g_width))+width;
+    random_y = Math.floor( Math.random()*(win_height-height-g_height))+height;
+    gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
+    gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
+    gmRect = gm.getBoundingClientRect()
+};
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
-    //スクロール無効化                                      
+    //スクロール無効化
     e.preventDefault();
-    // 指が触れた位置のx,y座標を記録
-//    flick_sx = e.touches[0].pageX;
-//    flick_sy = e.touches[0].pageY;
-    g_width = gomibako.naturalWidth;
-    g_height = gomibako.naturalHeight;
-    document.getElementById("text").innerHTML = win_width+","+win_height;
+//    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -66,5 +64,6 @@ moai.addEventListener("touchend", function(e) {
         var cha = document.getElementById("cha");
         cha.remove();
         document.getElementById("text").innerHTML = messages[messageNo];
+        setTimeout('location.reload()', 1000); //1秒後リロード
     }
 });
