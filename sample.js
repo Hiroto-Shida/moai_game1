@@ -27,8 +27,8 @@ window.onload = function(){
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
 
-    random_x = Math.floor( Math.random()*(win_width-(g_width*2)) ) +g_width;
-    random_y = Math.floor( Math.random()*(win_height-(g_height*2)) ) +g_height;
+    random_x = Math.floor( Math.random()*(win_width-(width*2)) ) +width;
+    random_y = Math.floor( Math.random()*(win_height-(height*2)) ) +height;
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
@@ -36,11 +36,11 @@ window.onload = function(){
 
 // モアイに指が触れたときの処理を定義
 moai.addEventListener("touchstart", function(e) {
-    //スクロール無効化                                      
+    //スクロール無効化
     e.preventDefault();
-    win_width = window.outerWidth; //ウィンドウの横サイズ
-    win_height = window.outerHeight; //ウィンドウの縦サイズ
-    document.getElementById("text").innerHTML = win_width+","+win_height;
+//    win_width = window.outerWidth; //ウィンドウの横サイズ
+//    win_height = window.outerHeight; //ウィンドウの縦サイズ
+    document.getElementById("text").innerHTML = win_width+"(x),(y)"+win_height;
 });
 
 // 画面上で指を移動させているきの処理を定義
