@@ -38,6 +38,7 @@ moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
+    document.getElementById("text").innerHTML = "あ、";
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -50,13 +51,14 @@ moai.addEventListener("touchmove", function(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
+    document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
 });
 
 // モアイから指が離れたときの処理を定義
 moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
-    const messages = ["うわ～","たすけて～","さよなら～"];
+    const messages = ["うわーん","たすけてー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         var cha = document.getElementById("cha");
@@ -70,5 +72,7 @@ moai.addEventListener("touchend", function(e) {
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
         setTimeout('location.reload()', 1200); //1秒後リロード
+    }else{
+        document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 });
