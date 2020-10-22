@@ -1,69 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8"><title>モアイ</title>
-    <meta name="viewport" content="width=device-width">
+      <meta charset="UTF-8"><title>モアイ</title>
+      <meta name="viewport" content="width=device-width">
     </head>
-<body>
-    <div id=text style="text-align: center;">モアイをゴミ箱に運んでください</div>
-    <div id="cha">
-        <img src="new_moai.png" width="80px" >
-    </div>
-    <div style="text-align: center;">
-        <img src="gomibako.png" id="gm" width="100px"><br>
-    </div>
-<script>
-
-var flick_sx = 0;
-var flick_sy = 0;
-var x = 0;
-var y = 0;
-var moai = document.getElementById("cha");
-
-moai.style.position = "absolute";
-moai.style.width = document.width + "px";
-moai.style.height = document.height + "px";
-
-var width = moai.offsetWidth;
-var height = moai.offsetHeight;
-
-// 四角に指が触れたときの処理を定義
-moai.addEventListener("touchstart", function(e) {
-    //スクロール無効化                                      
-    e.preventDefault();
-    // 指が触れた位置のx,y座標を記録
-    flick_sx = e.touches[0].pageX;
-    flick_sy = e.touches[0].pageY;
-});
-
-// 画面上で指を移動させているきの処理を定義
-moai.addEventListener("touchmove", function(e) {
-    // スクロール無効化
-    e.preventDefault();
-    // 指が触れた位置のx,y座標を記録
-    x = e.touches[0].pageX;
-    y = e.touches[0].pageY;
-
-    // フリック中のアニメーション＋スタイル
-        moai.style.left = (x-width/2) +"px";
-        moai.style.top = (y-height/2) +"px";
-});
- 
-// 四角から指が離れたときの処理を定義
-moai.addEventListener("touchend", function(e) {
-    // スクロール無効化
-    e.preventDefault();
-    const messages = ["うわ～","たすけて～","さよなら～"];
-    const messageNo = Math.floor( Math.random()*messages.length );
-    var gmRect = gm.getBoundingClientRect();
-    if((x>=gmRect.left && x<=(gmRect.left+gmRect.width)) && (y>=gmRect.top && y<=(gmRect.top+gmRect.height))){
-        var cha = document.getElementById("cha");
-        cha.remove();
-        document.getElementById("text").innerHTML = messages[messageNo];
-    }
-
-});
-
-</script>
-</body>
+    <body>
+      <div id=text style="text-align: center;">モアイをゴミ箱に運んでくださいー</div>
+      <div>
+        <img src="gomibako.png" id="gm" width="300px"><br>
+      </div>
+      <div id="cha">
+        <img src="new_moai.png" width="150px" >
+      </div>
+      <script type="text/javascript" src="sample.js">
+      </script>
+    </body>
 </html>
