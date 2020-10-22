@@ -22,7 +22,8 @@ window.onload = function(){
     win_height = window.innerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
-    moai.style.bottom = win_height/10;
+    moai.style.bottom = win_height/3;
+    moai.style.left = win_width/2-width;
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
     random_x = Math.floor( Math.random()*(win_width-g_width));
@@ -63,7 +64,7 @@ moai.addEventListener("touchend", function(e) {
         setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
         let dx = (gmRect.left+g_width/2) - x
-        let dy = (gmRect.top+g_height/3) - y
+        let dy = (gmRect.top+g_height/4) - y
         for (let i = 1; i <= 10; i++) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
