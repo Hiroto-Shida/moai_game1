@@ -4,7 +4,8 @@ var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
 var moai = document.getElementById("cha");
-moai.style.position = "absolute";
+moai.style.position = "fixed";
+moai.style.bottom = 0;
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
 
@@ -16,14 +17,12 @@ var random_x;
 var random_y;
 var gmRect;
 
-// window(HTML)の読み込みが完了してからサイズ読み込み
+// window(HTML)の読み込みが完了してからサイズなど読み込み
 window.onload = function(){
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
-
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
-
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
     random_x = Math.floor( Math.random()*(win_width-width-g_width))+width;
@@ -37,7 +36,7 @@ window.onload = function(){
 moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
     e.preventDefault();
-//    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
+    moai.style.position = "absolute";
 });
 
 // 画面上で指を移動させているきの処理を定義
@@ -47,11 +46,9 @@ moai.addEventListener("touchmove", function(e) {
     // 指が触れた位置のx,y座標を記録
     x = e.touches[0].pageX;
     y = e.touches[0].pageY;
-
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-//    document.getElementById("text").innerHTML = g_width+","+g_height;
 });
 
 // モアイから指が離れたときの処理を定義
@@ -65,9 +62,8 @@ moai.addEventListener("touchend", function(e) {
         cha.classList.add('active'); //class"active"を追加する
         setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
-
         let dx = (gmRect.left+g_width/2) - x
-        let dy = (gmRect.top+g_height/2) - y
+        let dy = (gmRect.top+g_height/3) - y
         for (let i = 1; i <= 10; i++) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
