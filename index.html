@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head>
       <meta charset="UTF-8"><title>モアイ</title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
       <div id=text style="text-align: center;">モアイをゴミ箱に運んでください</div>
       <img src="gomibako.png" id="gm" width="200px"><br>
       <img src="new_moai.png" id="cha" width="100px">
+      <style type="text/css">
+        #cha {
+          transition: all 1500ms 0s ease;
+        }
+        .active {
+          transform: rotate(3.0turn) scale(0.0);
+        }
+      </style>
       <script type="text/javascript" src="sample.js"></script>
     </body>
 </html>
