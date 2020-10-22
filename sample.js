@@ -59,6 +59,11 @@ moai.addEventListener("touchmove", function(e) {
 moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
+
+    win_width = document.body.offsetWidth; //ウィンドウの横サイズ
+    win_height = document.body.offsetHeight; //ウィンドウの縦サイズ
+    document.getElementById("text").innerHTML = win_width+","+win_height;
+
     const messages = ["うわ～","たすけて～","さよなら～"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
