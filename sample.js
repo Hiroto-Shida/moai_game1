@@ -40,7 +40,7 @@ moai.addEventListener("touchstart", function(e) {
     e.preventDefault();
 //    win_width = window.innerWidth; //ウィンドウの横サイズ
 //    win_height = window.innerHeight; //ウィンドウの縦サイズ
-    document.getElementById("text").innerHTML = "win="win_width+","+win_height+"----gomi="+gomibako.style.left+","+gomibako.style.top;
+    document.getElementById("text").innerHTML = `win=${win_width},${win_height}----gomi=${gomibako.style.left},${gomibako.style.top}`;
 });
 
 // 画面上で指を移動させているきの処理を定義
