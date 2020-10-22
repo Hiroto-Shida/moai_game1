@@ -20,8 +20,8 @@ var height;
 
 // window(HTML)の読み込みが完了してからサイズ読み込み
 window.onload = function(){
-    win_width = window.outerWidth; //ウィンドウの横サイズ
-    win_height = window.outerHeight; //ウィンドウの縦サイズ
+    win_width = window.innerWidth; //ウィンドウの横サイズ
+    win_height = window.innerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
@@ -38,9 +38,9 @@ window.onload = function(){
 moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
     e.preventDefault();
-//    win_width = window.outerWidth; //ウィンドウの横サイズ
-//    win_height = window.outerHeight; //ウィンドウの縦サイズ
-    document.getElementById("text").innerHTML = win_width+"(x),(y)"+win_height;
+//    win_width = window.innerWidth; //ウィンドウの横サイズ
+//    win_height = window.innerHeight; //ウィンドウの縦サイズ
+    document.getElementById("text").innerHTML = "win="win_width+","+win_height+"----gomi="+gomibako.style.left+","+gomibako.style.top;
 });
 
 // 画面上で指を移動させているきの処理を定義
