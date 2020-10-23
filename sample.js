@@ -3,7 +3,7 @@ var y = 0; //指の位置(y座標)
 var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
-var moai;// = document.getElementById("cha");
+var moai = document.getElementById("cha");
 //moai.style.position = "fixed";
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
@@ -17,7 +17,7 @@ var random_y;
 var gmRect;
 
 function initDefine() {
-    var moai = document.getElementById("cha");
+    moai = document.getElementById("cha");
     moai.style.position = "fixed";
     gomibako = document.getElementById("gm");
     gomibako.style.position = "absolute";
@@ -99,4 +99,5 @@ function addCharacter() {
     var childGm = document.getElementById("gm");
     // 追加
     parentDiv.insertBefore(newElement, childGm);
+    moai = document.getElementById("cha");
 }
