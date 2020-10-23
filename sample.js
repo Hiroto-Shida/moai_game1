@@ -71,8 +71,22 @@ moai.addEventListener("touchend", function(e) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
-        setTimeout('location.reload()', 1200); //1秒後リロード
+        setTimeout('addCharacter()', 1200); //1秒後にモアイ再設定
+//        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 });
+
+function addCharacter() {
+    var newElement = document.createElement("img"); // p要素作成
+    newElement.setAttribute("id","cha"); // img要素にidを設定
+    newElement.setAttribute("src","gomibako.png"); // img要素にsrcを設定
+    newElement.setAttribute("width","100px"); // img要素にwidthを設定
+    // 親要素（div）への参照を取得
+    var parentDiv = document.getElementById("parent-pic");     
+    // 子要素gmへの参照を取得
+    var childGm = document.getElementById("gm");
+    // 追加
+    parentDiv.insertBefore(newElement, childGm);
+}
