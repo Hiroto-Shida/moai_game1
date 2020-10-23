@@ -81,7 +81,7 @@ moai.addEventListener("touchend", function(e) {
 function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
-    newElement.setAttribute("src","gomibako.png"); // img要素にsrcを設定
+    newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
     newElement.setAttribute("width","100px"); // img要素にwidthを設定
     // 親要素（div）への参照を取得
     var parentDiv = document.getElementById("parent-pic");     
