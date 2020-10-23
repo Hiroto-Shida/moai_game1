@@ -3,27 +3,30 @@ var y = 0; //指の位置(y座標)
 var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
-var moai = document.getElementById("cha");
-moai.style.position = "fixed";
+var moai;// = document.getElementById("cha");
+//moai.style.position = "fixed";
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
 
-var gomibako = document.getElementById("gm");
-gomibako.style.position = "absolute";
+var gomibako;// = document.getElementById("gm");
+//gomibako.style.position = "absolute";
 var g_width; //ゴミ箱の横サイズ
 var g_height; //ゴミ箱の縦サイズ
 var random_x;
 var random_y;
 var gmRect;
 
-// window(HTML)の読み込みが完了してからサイズなど読み込み
-window.onload = function(){
+function initDefine() {
+    moai = document.getElementById("cha");
+    moai.style.position = "fixed";
+    gomibako = document.getElementById("gm");
+    gomibako.style.position = "absolute";
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
-    moai.style.top = (win_height*4/5)+"px";
-    moai.style.left = ((win_width/2)-(width/2))+"px";
+    moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
+    moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
     random_x = Math.floor( Math.random()*(win_width-g_width));
@@ -31,6 +34,11 @@ window.onload = function(){
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
     gmRect = gm.getBoundingClientRect()
+}
+
+// window(HTML)の読み込みが完了してからサイズなど読み込み
+window.onload = function(){
+    initDefine();
 };
 
 // モアイに指が触れたときの処理を定義
@@ -72,12 +80,14 @@ moai.addEventListener("touchend", function(e) {
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
         setTimeout('addCharacter()', 1200); //1秒後にモアイ再設定
+        setTimeout('initDefine()', 1200); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 });
 
+// モアイを追加する関数
 function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
