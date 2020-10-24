@@ -44,15 +44,16 @@ window.onload = function(){
 };
 
 // モアイに指が触れたときの処理を定義
-moai.addEventListener("touchstart", function(e) {
+function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
     document.getElementById("text").innerHTML = "あ、";
-});
+};
+moai.addEventListener("touchstart", touchStatEvent);
 
 // 画面上で指を移動させているきの処理を定義
-moai.addEventListener("touchmove", function(e) {
+function touchMoveEvent(e) {
     // スクロール無効化
     e.preventDefault();
     // 指が触れた位置のx,y座標を記録
@@ -62,10 +63,11 @@ moai.addEventListener("touchmove", function(e) {
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
-});
+};
+moai.addEventListener("touchmove", touchMoveEvent);
 
 // モアイから指が離れたときの処理を定義
-moai.addEventListener("touchend", function(e) {
+function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
     const messages = ["うわーん","たすけてー","さよならー"];
@@ -87,7 +89,8 @@ moai.addEventListener("touchend", function(e) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
-});
+};
+moai.addEventListener("touchend", touchEndEvent);
 
 // モアイを追加する関数
 function addCharacter() {
