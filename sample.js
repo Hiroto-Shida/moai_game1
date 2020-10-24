@@ -103,7 +103,7 @@ function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
-    newElement.setAttribute("width","150px"); // img要素にwidthを設定
+    newElement.setAttribute("width","130px"); // img要素にwidthを設定
     newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
