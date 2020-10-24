@@ -44,18 +44,17 @@ window.onload = function(){
 };
 
 // モアイに指が触れたときの処理を定義
-function touchStatEvent(moai) {
+moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
-    //e.preventDefault();
+    e.preventDefault();
     moai.style.position = "absolute";
     document.getElementById("text").innerHTML = "あ、";
-};
-moai.addEventListener("touchstart", touchStatEvent(moai));
+});
 
 // 画面上で指を移動させているきの処理を定義
-function touchMoveEvent(moai) {
+moai.addEventListener("touchmove", function(e) {
     // スクロール無効化
-    //e.preventDefault();
+    e.preventDefault();
     // 指が触れた位置のx,y座標を記録
     x = e.touches[0].pageX;
     y = e.touches[0].pageY;
@@ -63,13 +62,12 @@ function touchMoveEvent(moai) {
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
-};
-moai.addEventListener("touchmove", touchMoveEvent(moai));
+});
 
 // モアイから指が離れたときの処理を定義
-function touchEndEvent(moai) {
+moai.addEventListener("touchend", function(e) {
     // スクロール無効化
-    //e.preventDefault();
+    e.preventDefault();
     const messages = ["うわーん","たすけてー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
@@ -89,8 +87,7 @@ function touchEndEvent(moai) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
-};
-moai.addEventListener("touchend", touchEndEvent(moai))
+});
 
 // モアイを追加する関数
 function addCharacter() {
