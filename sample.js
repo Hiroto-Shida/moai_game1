@@ -26,9 +26,6 @@ function initDefine() {
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
-    moai.addEventListener("touchstart", touchStartEvent(moai));
-    moai.addEventListener("touchmove", touchMoveEvent(moai));
-    moai.addEventListener("touchend", touchEndEvent(moai));
 
     gomibako = document.getElementById("gm");
     gomibako.style.position = "absolute";
@@ -107,3 +104,7 @@ function addCharacter() {
 //    moai = document.getElementById("cha");
     document.getElementById("text").innerHTML = "モアイを動かしてください";
 }
+
+moai.addEventListener("touchstart", touchStartEvent(moai));
+moai.addEventListener("touchmove", touchMoveEvent(moai));
+moai.addEventListener("touchend", touchEndEvent(moai));
