@@ -67,7 +67,6 @@ function touchMoveEvent(moai) {
 moai.addEventListener("touchmove", touchMoveEvent(moai));
 
 // モアイから指が離れたときの処理を定義
-moai.addEventListener("touchend", touchEndEvent(moai))
 function touchEndEvent(moai) {
     // スクロール無効化
     //e.preventDefault();
@@ -91,6 +90,7 @@ function touchEndEvent(moai) {
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 };
+moai.addEventListener("touchend", touchEndEvent(moai))
 
 // モアイを追加する関数
 function addCharacter() {
