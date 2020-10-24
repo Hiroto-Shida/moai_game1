@@ -17,16 +17,18 @@ var random_y;
 var gmRect;
 
 function initDefine() {
-    moai = document.getElementById("cha");
-    moai.style.position = "fixed";
-    gomibako = document.getElementById("gm");
-    gomibako.style.position = "absolute";
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
+
+    moai = document.getElementById("cha");
+    moai.style.position = "fixed";
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
+
+    gomibako = document.getElementById("gm");
+    gomibako.style.position = "absolute";
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
     random_x = Math.floor( Math.random()*(win_width-g_width));
