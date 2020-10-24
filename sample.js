@@ -80,7 +80,7 @@ moai.addEventListener("touchend", function(e) {
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
         setTimeout('addCharacter()', 1200); //1秒後にモアイ再設定
-        setTimeout('initDefine()', 1200); //1秒後に再設定
+        setTimeout('initDefine()', 2000); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
@@ -99,5 +99,6 @@ function addCharacter() {
     var childGm = document.getElementById("gm");
     // 追加
     parentDiv.insertBefore(newElement, childGm);
-    moai = document.getElementById("cha");
+//    moai = document.getElementById("cha");
+    document.getElementById("text").innerHTML = "モアイを動かしてください";
 }
