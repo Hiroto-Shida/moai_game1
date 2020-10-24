@@ -27,6 +27,10 @@ function initDefine() {
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
 
+    moai.addEventListener("touchstart", touchStatEvent);
+    moai.addEventListener("touchmove", touchMoveEvent);
+    moai.addEventListener("touchend", touchEndEvent);
+
     gomibako = document.getElementById("gm");
     gomibako.style.position = "absolute";
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
@@ -48,9 +52,9 @@ function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "あ、";
+    document.getElementById("text").innerHTML = "え、";
 };
-moai.addEventListener("touchstart", touchStatEvent);
+
 
 // 画面上で指を移動させているきの処理を定義
 function touchMoveEvent(e) {
@@ -64,7 +68,7 @@ function touchMoveEvent(e) {
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
 };
-moai.addEventListener("touchmove", touchMoveEvent);
+
 
 // モアイから指が離れたときの処理を定義
 function touchEndEvent(e) {
@@ -90,7 +94,7 @@ function touchEndEvent(e) {
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 };
-moai.addEventListener("touchend", touchEndEvent);
+
 
 // モアイを追加する関数
 function addCharacter() {
