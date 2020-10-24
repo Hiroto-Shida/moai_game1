@@ -17,18 +17,16 @@ var random_y;
 var gmRect;
 
 function initDefine() {
-    win_width = window.innerWidth; //ウィンドウの横サイズ
-    win_height = window.innerHeight; //ウィンドウの縦サイズ
-
     moai = document.getElementById("cha");
     moai.style.position = "fixed";
+    gomibako = document.getElementById("gm");
+    gomibako.style.position = "absolute";
+    win_width = window.innerWidth; //ウィンドウの横サイズ
+    win_height = window.innerHeight; //ウィンドウの縦サイズ
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
-
-    gomibako = document.getElementById("gm");
-    gomibako.style.position = "absolute";
     g_width = gomibako.offsetWidth; //ゴミ箱の横サイズ
     g_height = gomibako.offsetHeight; //ゴミ箱の縦サイズ
     random_x = Math.floor( Math.random()*(win_width-g_width));
@@ -44,15 +42,15 @@ window.onload = function(){
 };
 
 // モアイに指が触れたときの処理を定義
-function touchStartEvent(moai){
+moai.addEventListener("touchstart", function(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
     document.getElementById("text").innerHTML = "あ、";
-};
+});
 
 // 画面上で指を移動させているきの処理を定義
-function touchMoveEvent(moai) {
+moai.addEventListener("touchmove", function(e) {
     // スクロール無効化
     e.preventDefault();
     // 指が触れた位置のx,y座標を記録
@@ -62,10 +60,10 @@ function touchMoveEvent(moai) {
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
-};
+});
 
 // モアイから指が離れたときの処理を定義
-function touchEndEvent(moai) {
+moai.addEventListener("touchend", function(e) {
     // スクロール無効化
     e.preventDefault();
     const messages = ["うわーん","たすけてー","さよならー"];
@@ -104,7 +102,3 @@ function addCharacter() {
 //    moai = document.getElementById("cha");
     document.getElementById("text").innerHTML = "モアイを動かしてください";
 }
-
-moai.addEventListener("touchstart", touchStartEvent(moai));
-moai.addEventListener("touchmove", touchMoveEvent(moai));
-moai.addEventListener("touchend", touchEndEvent(moai));
