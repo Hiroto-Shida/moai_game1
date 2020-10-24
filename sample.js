@@ -13,6 +13,12 @@ var g_height; //ゴミ箱の縦サイズ
 var random_x;
 var random_y;
 
+// タッチイベントが利用可能かの判別
+var supportTouch = 'ontouchend' in document;
+var EVENTNAME_TOUCHSTART = supportTouch ? 'touchstart' : 'mousedown';
+var EVENTNAME_TOUCHMOVE = supportTouch ? 'touchmove' : 'mousemove';
+var EVENTNAME_TOUCHEND = supportTouch ? 'touchend' : 'mouseup';
+
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
@@ -23,9 +29,9 @@ function initDefine() {
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
-    moai.addEventListener("touchstart", touchStatEvent); // モアイに指が触れたときの処理を追加
-    moai.addEventListener("touchmove", touchMoveEvent); // 画面上で指を移動させているきの処理を追加
-    moai.addEventListener("touchend", touchEndEvent); // モアイから指が離れたときの処理を追加
+    moai.addEventListener(EVENTNAME_TOUCHSTART, touchStatEvent); // モアイに指が触れたときの処理を追加
+    moai.addEventListener(EVENTNAME_TOUCHMOVE, touchMoveEvent); // 画面上で指を移動させているきの処理を追加
+    moai.addEventListener(EVENTNAME_TOUCHEND, touchEndEvent); // モアイから指が離れたときの処理を追加
 
     gomibako = document.getElementById("gm");
     gomibako.style.position = "absolute";
@@ -47,7 +53,7 @@ function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "え、";
+    document.getElementById("text").innerHTML = "あ、";
 };
 
 // 画面上で指を移動させているきの処理を定義
