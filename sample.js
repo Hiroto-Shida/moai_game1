@@ -12,6 +12,10 @@ var g_width; //ゴミ箱の横サイズ
 var g_height; //ゴミ箱の縦サイズ
 var random_x;
 var random_y;
+var gmRect;
+
+var count_num;
+var count = 0;
 
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
@@ -35,6 +39,12 @@ function initDefine() {
     random_y = Math.floor( Math.random()*(win_height-height-g_height-(win_height/5)))+height;
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
+    gmRect = gm.getBoundingClientRect();
+
+    count_num = document.getElementById("count_txt");
+    count_num.style.position = "absolute";
+    count_num.style.left = (gmRect.left+g_width/2) +"px";
+    count_num.style.top = (gmRect.top+g_height/2) +"px";
 }
 
 // window(HTML)の読み込みが完了してからサイズなど読み込み
@@ -69,7 +79,6 @@ function touchEndEvent(e) {
     e.preventDefault();
     const messages = ["うわーん","たすけてー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
-    var gmRect = gm.getBoundingClientRect();
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
         moai.classList.add('active'); //class"active"を追加する
@@ -84,6 +93,8 @@ function touchEndEvent(e) {
         setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
         setTimeout('initDefine()', 1000); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
+        count++;
+        count_num.innerHTML = count;
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
