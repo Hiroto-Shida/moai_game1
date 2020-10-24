@@ -77,7 +77,6 @@ function touchMoveEvent(e) {
 function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
-    moai.classList.remove('buruburu'); //振動するclassを削除
     const messages = ["うわー","あれまー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
@@ -96,6 +95,7 @@ function touchEndEvent(e) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
+    moai.classList.remove('buruburu'); //振動するclassを削除
 };
 
 // モアイを追加する関数
@@ -103,7 +103,7 @@ function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
-    newElement.setAttribute("width","100px"); // img要素にwidthを設定
+    newElement.setAttribute("width","150px"); // img要素にwidthを設定
     newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
