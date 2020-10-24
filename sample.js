@@ -45,8 +45,6 @@ function initDefine() {
     count_num.style.position = "absolute";
     count_num.style.left = (gmRect.left+(g_width/2)-(count_num.offsetWidth/2)) +"px";
     count_num.style.top = (gmRect.top+(g_height/2)-(count_num.offsetHeight/2)) +"px";
-    count_num.innerHTML = count;
-    count++;
 }
 
 // window(HTML)の読み込みが完了してからサイズなど読み込み
@@ -111,4 +109,6 @@ function addCharacter() {
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
     parentDiv.insertBefore(newElement, childGm); // 追加
     document.getElementById("text").innerHTML = "モアイを動かしてください";
+    count++;
+    count_num.innerHTML = count;
 }
