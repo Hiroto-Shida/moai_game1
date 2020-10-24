@@ -69,7 +69,7 @@ function touchMoveEvent(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-    moai.classList.add('buruburu'); //振動するclassを追加
+//    moai.classList.add('buruburu'); //振動するclassを追加
     document.getElementById("text").innerHTML = "わーはなせー";
 };
 
@@ -95,7 +95,7 @@ function touchEndEvent(e) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
-    moai.classList.remove('buruburu'); //振動するclassを削除
+//    moai.classList.remove('buruburu'); //振動するclassを削除
 };
 
 // モアイを追加する関数
