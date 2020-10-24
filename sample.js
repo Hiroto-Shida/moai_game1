@@ -57,7 +57,7 @@ function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "え、";
+    document.getElementById("text").innerHTML = "あ、";
 };
 
 // 画面上で指を移動させているきの処理を定義
@@ -106,7 +106,7 @@ function addCharacter() {
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
     newElement.setAttribute("width","100px"); // img要素にwidthを設定
-    newElement.setAttribute("style","z-index:200"); // img要素にstyleを設定
+    newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
     parentDiv.insertBefore(newElement, childGm); // 追加
