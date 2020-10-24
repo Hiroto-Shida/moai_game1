@@ -46,6 +46,7 @@ function initDefine() {
     count_num.style.left = (gmRect.left+g_width/2) +"px";
     count_num.style.top = (gmRect.top+g_height/2) +"px";
     count_num.innerHTML = count;
+    count++;
 }
 
 // window(HTML)の読み込みが完了してからサイズなど読み込み
@@ -94,7 +95,6 @@ function touchEndEvent(e) {
         setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
         setTimeout('initDefine()', 1000); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
-        count++;
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
