@@ -3,7 +3,7 @@ var y = 0; //指の位置(y座標)
 var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
-var moai = document.getElementById("cha");
+var moai;// = document.getElementById("cha");
 //moai.style.position = "fixed";
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
@@ -26,7 +26,6 @@ function initDefine() {
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
-
     moai.addEventListener("touchstart", touchStatEvent);
     moai.addEventListener("touchmove", touchMoveEvent);
     moai.addEventListener("touchend", touchEndEvent);
@@ -55,7 +54,6 @@ function touchStatEvent(e) {
     document.getElementById("text").innerHTML = "え、";
 };
 
-
 // 画面上で指を移動させているきの処理を定義
 function touchMoveEvent(e) {
     // スクロール無効化
@@ -68,7 +66,6 @@ function touchMoveEvent(e) {
     moai.style.top = (y-height/2) +"px";
     document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
 };
-
 
 // モアイから指が離れたときの処理を定義
 function touchEndEvent(e) {
@@ -87,14 +84,13 @@ function touchEndEvent(e) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
-        setTimeout('addCharacter()', 1200); //1秒後にモアイ再設定
+        setTimeout('addCharacter()', 1000); //1秒後にモアイ再設定
         setTimeout('initDefine()', 2000); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
 };
-
 
 // モアイを追加する関数
 function addCharacter() {
