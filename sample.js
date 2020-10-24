@@ -17,6 +17,7 @@ var gmRect;
 var count_num;
 var count = 0;
 
+// 初期設定
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
@@ -43,21 +44,19 @@ function initDefine() {
 
     count_num = document.getElementById("count_txt");
     count_num.style.position = "absolute";
-    count_num.style.left = (gmRect.left+(g_width/2)-(count_num.offsetWidth/2)) +"px";
-    count_num.style.top = (gmRect.top+(g_height/2)-(count_num.offsetHeight/2)) +"px";
+    count_num.style.left = (gmRect.left+(g_width/2)-(count_num.offsetWidth/2))+"px";
+    count_num.style.top = (gmRect.top+(g_height/2)-(count_num.offsetHeight/2))+"px";
 }
 
-// window(HTML)の読み込みが完了してからサイズなど読み込み
-window.onload = function(){
-    initDefine();
-};
+// window(HTML)の読み込みが完了してから初期設定
+window.onload = initDefine();
 
 // モアイに指が触れたときの処理を定義
 function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "あ、";
+    document.getElementById("text").innerHTML = "え、";
 };
 
 // 画面上で指を移動させているきの処理を定義
@@ -70,14 +69,16 @@ function touchMoveEvent(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-    document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
+    moai.classList.add('buruburu'); //振動するclassを追加
+    document.getElementById("text").innerHTML = "わーはなせー";
 };
 
 // モアイから指が離れたときの処理を定義
 function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
-    const messages = ["うわーん","たすけてー","さよならー"];
+    moai.classList.remove('buruburu'); //振動するclassを削除
+    const messages = ["うわー","あれまー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
@@ -92,7 +93,6 @@ function touchEndEvent(e) {
         }
         setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
         setTimeout('initDefine()', 1000); //1秒後に再設定
-//        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
