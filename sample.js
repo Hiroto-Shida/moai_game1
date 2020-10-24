@@ -3,13 +3,11 @@ var y = 0; //指の位置(y座標)
 var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
-var moai;// = document.getElementById("cha");
-//moai.style.position = "fixed";
+var moai;
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
 
-var gomibako;// = document.getElementById("gm");
-//gomibako.style.position = "absolute";
+var gomibako;
 var g_width; //ゴミ箱の横サイズ
 var g_height; //ゴミ箱の縦サイズ
 var random_x;
@@ -51,7 +49,7 @@ function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "え、";
+    document.getElementById("text").innerHTML = "あ、";
 };
 
 // 画面上で指を移動させているきの処理を定義
@@ -74,8 +72,8 @@ function touchEndEvent(e) {
     const messages = ["うわーん","たすけてー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
-        var cha = document.getElementById("cha");
-        cha.classList.add('active'); //class"active"を追加する
+        //var cha = document.getElementById("cha");
+        moai.classList.add('active'); //class"active"を追加する
         setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
         let dx = (gmRect.left+g_width/2) - x
@@ -84,7 +82,7 @@ function touchEndEvent(e) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
-        setTimeout('addCharacter()', 1000); //1秒後にモアイ再設定
+        setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
         setTimeout('initDefine()', 1000); //1秒後に再設定
 //        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
@@ -98,12 +96,8 @@ function addCharacter() {
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
     newElement.setAttribute("width","100px"); // img要素にwidthを設定
-    // 親要素（div）への参照を取得
-    var parentDiv = document.getElementById("parent-pic");     
-    // 子要素gmへの参照を取得
-    var childGm = document.getElementById("gm");
-    // 追加
-    parentDiv.insertBefore(newElement, childGm);
-//    moai = document.getElementById("cha");
+    var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
+    var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
+    parentDiv.insertBefore(newElement, childGm); // 追加
     document.getElementById("text").innerHTML = "モアイを動かしてください";
 }
