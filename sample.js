@@ -43,8 +43,8 @@ function initDefine() {
 
     count_num = document.getElementById("count_txt");
     count_num.style.position = "absolute";
-    count_num.style.left = (gmRect.left+g_width/2) +"px";
-    count_num.style.top = (gmRect.top+g_height/2) +"px";
+    count_num.style.left = (gmRect.left+(g_width/2)-(count_num.offsetWidth/2)) +"px";
+    count_num.style.top = (gmRect.top+(g_height/2)-(count_num.offsetHeight/2)) +"px";
     count_num.innerHTML = count;
     count++;
 }
