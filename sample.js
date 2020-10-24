@@ -3,16 +3,15 @@ var y = 0; //指の位置(y座標)
 var win_width; //ウィンドウの横サイズ
 var win_height; //ウィンドウの縦サイズ
 
-var moai;
+var moai; //モアイの情報
 var width; //モアイの横サイズ
 var height; //モアイの縦サイズ
 
-var gomibako;
+var gomibako; //ゴミ箱の情報
 var g_width; //ゴミ箱の横サイズ
 var g_height; //ゴミ箱の縦サイズ
 var random_x;
 var random_y;
-var gmRect;
 
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
@@ -36,7 +35,6 @@ function initDefine() {
     random_y = Math.floor( Math.random()*(win_height-height-g_height-(win_height/5)))+height;
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
-    gmRect = gm.getBoundingClientRect()
 }
 
 // window(HTML)の読み込みが完了してからサイズなど読み込み
@@ -49,7 +47,7 @@ function touchStatEvent(e) {
     //スクロール無効化
     e.preventDefault();
     moai.style.position = "absolute";
-    document.getElementById("text").innerHTML = "あ、";
+    document.getElementById("text").innerHTML = "え、";
 };
 
 // 画面上で指を移動させているきの処理を定義
@@ -71,6 +69,7 @@ function touchEndEvent(e) {
     e.preventDefault();
     const messages = ["うわーん","たすけてー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
+    var gmRect = gm.getBoundingClientRect();
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
         moai.classList.add('active'); //class"active"を追加する
