@@ -12,7 +12,12 @@ var g_width; //ゴミ箱の横サイズ
 var g_height; //ゴミ箱の縦サイズ
 var random_x;
 var random_y;
+var gmRect;
 
+var count_num;
+var count = 0;
+
+// 初期設定
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
     win_height = window.innerHeight; //ウィンドウの縦サイズ
@@ -35,12 +40,16 @@ function initDefine() {
     random_y = Math.floor( Math.random()*(win_height-height-g_height-(win_height/5)))+height;
     gomibako.style.left = random_x +"px"; //ゴミ箱の位置(左)
     gomibako.style.top = random_y +"px"; //ゴミ箱の位置(上)
+    gmRect = gm.getBoundingClientRect();
+
+    count_num = document.getElementById("count_txt");
+    count_num.style.position = "absolute";
+    count_num.style.left = (gmRect.left+(g_width/2)-(count_num.offsetWidth/2))+"px";
+    count_num.style.top = (gmRect.top+(g_height/2)-(count_num.offsetHeight/2))+"px";
 }
 
-// window(HTML)の読み込みが完了してからサイズなど読み込み
-window.onload = function(){
-    initDefine();
-};
+// window(HTML)の読み込みが完了してから初期設定
+window.onload = initDefine();
 
 // モアイに指が触れたときの処理を定義
 function touchStatEvent(e) {
@@ -60,16 +69,16 @@ function touchMoveEvent(e) {
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
-    document.getElementById("text").innerHTML = "そうそう、そんなかんじ";
+    moai.classList.add('buruburu'); //振動するclassを追加
+    document.getElementById("text").innerHTML = "わーはなせー";
 };
 
 // モアイから指が離れたときの処理を定義
 function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
-    const messages = ["うわーん","たすけてー","さよならー"];
+    const messages = ["うわー","あれまー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
-    var gmRect = gm.getBoundingClientRect();
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
         moai.classList.add('active'); //class"active"を追加する
@@ -83,10 +92,10 @@ function touchEndEvent(e) {
         }
         setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
         setTimeout('initDefine()', 1000); //1秒後に再設定
-//        setTimeout('location.reload()', 1200); //1秒後リロード
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
+    moai.classList.remove('buruburu'); //振動するclassを削除
 };
 
 // モアイを追加する関数
@@ -94,10 +103,12 @@ function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
-    newElement.setAttribute("width","100px"); // img要素にwidthを設定
-    newElement.setAttribute("style","z-index:200"); // img要素にstyleを設定
+    newElement.setAttribute("width","130px"); // img要素にwidthを設定
+    newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
     parentDiv.insertBefore(newElement, childGm); // 追加
     document.getElementById("text").innerHTML = "モアイを動かしてください";
+    count++;
+    count_num.innerHTML = count;
 }
