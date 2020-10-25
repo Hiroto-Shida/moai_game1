@@ -49,9 +49,7 @@ function initDefine() {
 }
 
 // window(HTML)の読み込みが完了してから初期設定
-window.onload = function(){
-    initDefine();
-};
+window.onload = initDefine();
 
 // モアイに指が触れたときの処理を定義
 function touchStatEvent(e) {
