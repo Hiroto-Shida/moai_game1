@@ -83,6 +83,20 @@ function touchMoveEvent(e) {
     // 指が触れた位置のx,y座標を記録
     x = e.touches[0].pageX;
     y = e.touches[0].pageY;
+
+    if (x < (width/2)){
+        x = width/2;
+    }
+    if (x > (win_width-width/2)){
+        x = win_width-width/2;
+    }
+    if (y < (height/2)){
+        y = height/2;
+    }
+    if (y > (win_height-height/2)){
+        y = win_height-height/2;
+    }
+
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
