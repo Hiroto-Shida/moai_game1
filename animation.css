@@ -1,0 +1,15 @@
+.active {
+    transition: all 1500ms 0s ease;
+    transform: rotate(2.0turn) scale(0.0);
+}
+.buruburu {
+    display: inline-block;
+    animation: hurueru .1s  infinite;
+}
+@keyframes hurueru {
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(5px, 5px) rotateZ(5deg)}
+    50% {transform: translate(0px, 5px) rotateZ(0deg)}
+    75% {transform: translate(5px, 0px) rotateZ(-5deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
