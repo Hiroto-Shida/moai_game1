@@ -14,22 +14,16 @@ var random_x;
 var random_y;
 var gmRect;
 
-var count_num;
-var count = 0;
+var count_num; //ゴミ箱に捨てた数(カウント)の情報
+var count = 0; //ゴミ箱に捨てた数(カウント)
 
 (function() {
     // スクロールを禁止する関数
     function noScroll(event) {
       event.preventDefault();
     }
-    // スクロール禁止(SP)
-    document.addEventListener('touchmove', noScroll, { passive: false });
-    // スクロール禁止(PC)
-    document.addEventListener('mousewheel', noScroll, { passive: false });
-    // スクロール禁止を解除(SP)
-    // document.removeEventListener('touchmove', noScroll, { passive: false });
-    // スクロール禁止を解除(PC)
-    // document.removeEventListener('mousewheel', noScroll, { passive: false });
+    document.addEventListener('touchmove', noScroll, { passive: false }); // スクロール禁止(SP)
+    document.addEventListener('mousewheel', noScroll, { passive: false }); // スクロール禁止(PC)
 })();
 
 // 初期設定
@@ -127,7 +121,7 @@ function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
     newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
-    newElement.setAttribute("width","130px"); // img要素にwidthを設定
+    newElement.setAttribute("width","100px"); // img要素にwidthを設定
     newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
     var childGm = document.getElementById("gm"); // 子要素gmへの参照を取得
