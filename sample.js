@@ -17,6 +17,21 @@ var gmRect;
 var count_num;
 var count = 0;
 
+(function() {
+    // スクロールを禁止する関数
+    function noScroll(event) {
+      event.preventDefault();
+    }
+    // スクロール禁止(SP)
+    document.addEventListener('touchmove', noScroll, { passive: false });
+    // スクロール禁止(PC)
+    document.addEventListener('mousewheel', noScroll, { passive: false });
+    // スクロール禁止を解除(SP)
+    // document.removeEventListener('touchmove', noScroll, { passive: false });
+    // スクロール禁止を解除(PC)
+    // document.removeEventListener('mousewheel', noScroll, { passive: false });
+})();
+
 // 初期設定
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
@@ -68,6 +83,13 @@ function touchMoveEvent(e) {
     // 指が触れた位置のx,y座標を記録
     x = e.touches[0].pageX;
     y = e.touches[0].pageY;
+
+    // 画面外にはみ出た場合の処理
+    if (x < (width/2)) x = width/2;
+    if (x > (win_width-width/2)) x = win_width-width/2;
+    if (y < (height/2)) y = height/2;
+    if (y > (win_height-height/2)) y = win_height-height/2;
+
     // フリック中のアニメーション＋スタイル
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
