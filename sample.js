@@ -17,6 +17,21 @@ var gmRect;
 var count_num;
 var count = 0;
 
+(function() {
+    // スクロールを禁止する関数
+    function noScroll(event) {
+      event.preventDefault();
+    }
+    // スクロール禁止(SP)
+    document.addEventListener('touchmove', noScroll, { passive: false });
+    // スクロール禁止(PC)
+    document.addEventListener('mousewheel', noScroll, { passive: false });
+    // スクロール禁止を解除(SP)
+    // document.removeEventListener('touchmove', noScroll, { passive: false });
+    // スクロール禁止を解除(PC)
+    // document.removeEventListener('mousewheel', noScroll, { passive: false });
+})();
+
 // 初期設定
 function initDefine() {
     win_width = window.innerWidth; //ウィンドウの横サイズ
