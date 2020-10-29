@@ -100,9 +100,9 @@ function touchEndEvent(e) {
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
-        setTimeout("moai.classList.add('active')", 100); //0.1秒後にclass"active"を追加する
+        setTimeout("moai.classList.add('active')", 500); //0.1秒後にclass"active"を追加する
         //moai.classList.add('active'); //class"active"を追加する
-        setTimeout('cha.remove()', 1000); //1秒後に削除
+        setTimeout('cha.remove()', 1500); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
         let dx = (gmRect.left+g_width/2) - x
         let dy = (gmRect.top+g_height/5) - y
@@ -110,8 +110,8 @@ function touchEndEvent(e) {
             moai.style.left = (x-width/2)+dx*(i/10) +"px";
             moai.style.top = (y-height/2)+dy*(i/10) +"px";
         }
-        setTimeout('addCharacter()', 1000); //1秒後にモアイ再追加
-        setTimeout('initDefine()', 1000); //1秒後に再設定
+        setTimeout('addCharacter()', 1500); //1秒後にモアイ再追加
+        setTimeout('initDefine()', 1500); //1秒後に再設定
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
