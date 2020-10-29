@@ -100,7 +100,8 @@ function touchEndEvent(e) {
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         //var cha = document.getElementById("cha");
-        moai.classList.add('active'); //class"active"を追加する
+        setTimeout("moai.classList.add('active')", 100); //0.1秒後にclass"active"を追加する
+        //moai.classList.add('active'); //class"active"を追加する
         setTimeout('cha.remove()', 1000); //1秒後に削除
         document.getElementById("text").innerHTML = messages[messageNo];
         let dx = (gmRect.left+g_width/2) - x
