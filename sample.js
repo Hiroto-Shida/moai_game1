@@ -95,6 +95,7 @@ function touchMoveEvent(e) {
 function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
+    moai.classList.remove('buruburu'); //振動するclassを削除
     const messages = ["うわー","あれまー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
@@ -113,7 +114,6 @@ function touchEndEvent(e) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
-    moai.classList.remove('buruburu'); //振動するclassを削除
 };
 
 // モアイを追加する関数
