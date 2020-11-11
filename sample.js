@@ -99,26 +99,25 @@ function touchEndEvent(e) {
     const messages = ["うわー","あれまー","さよならー"];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
-        
         let promise = new Promise((resolve, reject) => { // #1
             document.getElementById("text").innerHTML = messages[messageNo];
             resolve('1')
           })
-          promise.then(() => { // #2
+          promise.then(() => { // 上記処理後0.1秒後activeclass追加
             return new Promise((resolve, reject) => {
               setTimeout(() => {
                 moai.classList.add('active'); //0.1秒後にclass"active"を追加する
                 resolve("2")
               }, 100)
             })
-          }).then(() => { // #3
+          }).then(() => { // 上記処理後にゴミ箱中心へモアイ移動
             let dx = (gmRect.left+g_width/2) - x
             let dy = (gmRect.top+g_height/5) - y
             for (let i = 1; i <= 10; i++) {
                 moai.style.left = (x-width/2)+dx*(i/10) +"px";
                 moai.style.top = (y-height/2)+dy*(i/10) +"px";
             }
-          }).then(() => {
+          }).then(() => { //上記処理後10001秒後，以下の関数を実行
             return new Promise((resolve, reject) => {
               setTimeout(() => {
                 cha.remove(); //1秒後に削除
@@ -130,7 +129,6 @@ function touchEndEvent(e) {
           }).catch(() => { // エラーハンドリング
             console.error('Something wrong!')
           })
-
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
