@@ -107,7 +107,7 @@ function touchEndEvent(e) {
           promise.then(() => { // #2
             return new Promise((resolve, reject) => {
               setTimeout(() => {
-                gomibako.classList.add('active'); //0.1秒後にclass"active"を追加する
+                moai.classList.add('active'); //0.1秒後にclass"active"を追加する
                 resolve("2")
               }, 100)
             })
