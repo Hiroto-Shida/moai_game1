@@ -17,8 +17,8 @@ var gmRect;
 var count_num; //ゴミ箱に捨てた数(カウント)の情報
 var count = 0; //ゴミ箱に捨てた数(カウント)
 
+// スクロールを禁止する関数
 (function() {
-    // スクロールを禁止する関数
     function noScroll(event) {
       event.preventDefault();
     }
@@ -96,7 +96,7 @@ function touchEndEvent(e) {
     // スクロール無効化
     e.preventDefault();
     moai.classList.remove('buruburu'); //振動するclassを削除
-    const messages = ["うわー","あれまー","さよならー"];
+    const messages = ["うわー","あれまー","さよならー","どうして―",];
     const messageNo = Math.floor( Math.random()*messages.length );
     if((x>=gmRect.left && x<=(gmRect.left+g_width)) && (y>=gmRect.top && y<=(gmRect.top+g_height))){
         let promise = new Promise((resolve, reject) => { // #1
@@ -108,7 +108,7 @@ function touchEndEvent(e) {
               setTimeout(() => {
                 moai.classList.add('active'); //0.1秒後にclass"active"を追加する
                 resolve("2")
-              }, 100)
+              }, 50)
             })
           }).then(() => { // 上記処理後にゴミ箱中心へモアイ移動
             let dx = (gmRect.left+g_width/2) - x
@@ -117,7 +117,7 @@ function touchEndEvent(e) {
                 moai.style.left = (x-width/2)+dx*(i/10) +"px";
                 moai.style.top = (y-height/2)+dy*(i/10) +"px";
             }
-          }).then(() => { //上記処理後10001秒後，以下の関数を実行
+          }).then(() => { //上記処理後1000秒後，以下の関数を実行
             return new Promise((resolve, reject) => {
               setTimeout(() => {
                 cha.remove(); //1秒後に削除

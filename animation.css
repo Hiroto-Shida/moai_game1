@@ -1,5 +1,5 @@
 .active {
-    transition: all 1500ms 0s ease;
+    transition: all 1200ms 0s ease;
     transform: rotate(2.0turn) scale(0.0);
 }
 .buruburu {
