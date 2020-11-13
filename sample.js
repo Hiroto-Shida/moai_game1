@@ -94,7 +94,7 @@ function touchMoveEvent(e) {
     moai.style.left = (x-width/2) +"px";
     moai.style.top = (y-height/2) +"px";
     moai.classList.add('buruburu'); //振動するclassを追加
-    document.getElementById("text").innerHTML = "わーはなせー！";
+    document.getElementById("text").innerHTML = "わーはなせー";
 };
 
 // モアイから指が離れたときの処理を定義
