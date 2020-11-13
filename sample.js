@@ -17,6 +17,7 @@ var gmRect;
 var count_num; //ゴミ箱に捨てた数(カウント)の情報
 var count = 0; //ゴミ箱に捨てた数(カウント)
 
+// jQueryでHTMLの読み込みが完了してからCSSを読みこむ
 $(function(){
   var style = "<link rel='stylesheet' href='animation.css'>";
   $('head:last').after(style);
