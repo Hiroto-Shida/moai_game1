@@ -17,6 +17,13 @@ var gmRect;
 var count_num; //ゴミ箱に捨てた数(カウント)の情報
 var count = 0; //ゴミ箱に捨てた数(カウント)
 
+var supportTouch = 'ontouchend' in document; // タッチイベントが利用可能かの判別
+
+// イベント名
+var EVENTNAME_TOUCHSTART = supportTouch ? 'touchstart' : 'mousedown';
+var EVENTNAME_TOUCHMOVE = supportTouch ? 'touchmove' : 'mousemove';
+var EVENTNAME_TOUCHEND = supportTouch ? 'touchend' : 'mouseup';
+
 // jQueryでHTMLの読み込みが完了してからCSSを読みこむ
 $(function(){
   var style = "<link rel='stylesheet' href='animation.css'>";
@@ -38,14 +45,18 @@ function initDefine() {
     win_height = window.innerHeight; //ウィンドウの縦サイズ
 
     moai = document.getElementById("cha");
+//    if (!supportTouch){
+//      moai.ondragstart = function() {
+//        return false;
+//      };
+//    }
     moai.style.position = "fixed";
     width = moai.offsetWidth; //モアイの横サイズ
     height = moai.offsetHeight; //モアイの縦サイズ
     moai.style.top = (win_height*4/5)+"px"; //モアイ位置設定(上)
     moai.style.left = ((win_width/2)-(width/2))+"px"; //モアイ位置設定(左)
-    moai.addEventListener("touchstart", touchStatEvent); // モアイに指が触れたときの処理を追加
-    moai.addEventListener("touchmove", touchMoveEvent); // 画面上で指を移動させているきの処理を追加
-    moai.addEventListener("touchend", touchEndEvent); // モアイから指が離れたときの処理を追加
+    moai.addEventListener(EVENTNAME_TOUCHSTART, touchStatEvent); // モアイに指が触れたときの処理を追加
+    moai.addEventListener(EVENTNAME_TOUCHEND, touchEndEvent); // モアイから指が離れたときの処理を追加
 
     gomibako = document.getElementById("gm");
     gomibako.style.position = "absolute";
@@ -74,6 +85,7 @@ function touchStatEvent(e) {
     e.preventDefault();
     moai.style.position = "absolute";
     document.getElementById("text").innerHTML = "え、";
+    moai.addEventListener(EVENTNAME_TOUCHMOVE, touchMoveEvent); // 画面上で指を移動させているきの処理を追加
 };
 
 // 画面上で指を移動させているきの処理を定義
@@ -81,8 +93,13 @@ function touchMoveEvent(e) {
     // スクロール無効化
     e.preventDefault();
     // 指が触れた位置のx,y座標を記録
-    x = e.touches[0].pageX;
-    y = e.touches[0].pageY;
+    if (!supportTouch){
+      x = e.clientX;
+      y = e.clientY;
+    }else{
+      x = e.touches[0].pageX;
+      y = e.touches[0].pageY;
+    }    
 
     // 画面外にはみ出た場合の処理
     if (x < (width/2)) x = width/2;
@@ -138,6 +155,7 @@ function touchEndEvent(e) {
     }else{
         document.getElementById("text").innerHTML = "モアイを動かしてください";
     }
+    moai.removeEventListener(EVENTNAME_TOUCHMOVE, touchMoveEvent); // 画面上で指を移動させているきの処理を削除
 };
 
 // モアイを追加する関数
