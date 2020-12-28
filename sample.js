@@ -162,7 +162,7 @@ function touchEndEvent(e) {
 function addCharacter() {
     var newElement = document.createElement("img"); // p要素作成
     newElement.setAttribute("id","cha"); // img要素にidを設定
-    newElement.setAttribute("src","moai.png"); // img要素にsrcを設定
+    newElement.setAttribute("src","./pictures/moai.png"); // img要素にsrcを設定
     newElement.setAttribute("width","100px"); // img要素にwidthを設定
     newElement.setAttribute("style","z-index:300"); // img要素にstyleを設定
     var parentDiv = document.getElementById("parent-pic"); // 親要素（div）への参照を取得
